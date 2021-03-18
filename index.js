@@ -7,8 +7,7 @@ const { Schema, model } = require("mongoose")
 const { config } = require("dotenv")
 config()
 
-const PORT = process.env.BASE_PORT || 7000
-const URL = process.env.BASE_URL
+const PORT = process.env.PORT || 80
 
 const schema = new Schema({
   todo: { type: String, required: true },
@@ -68,7 +67,7 @@ app.delete("/", async (req, res) => {
 
 app.listen(PORT, async () => {
   try {
-    await mongoose.connect(URL, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false })
+    await mongoose.connect("mongodb+srv://keks:22101995Kolya@cluster0.o9t1k.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false })
     console.log(`server start at ${PORT}`)
   } catch (e) {
     console.log(e)
