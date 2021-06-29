@@ -1,28 +1,3 @@
 /node_modules
-/dist
-creds
-
-# MACOS files
-**/._.DS_Store
-**/.DS_Store
-*.DS_Store/*
-*.DS_Store
-.DS_Store
-
-# IDE files
-.idea/*
-.vscode/*
-
-# Logs
-logs
-*.log
-
-# env
-.env
-
-#lock-files
-package-lock.json
-yarn.lock
-
-# production
-/build
+/.env
+.idea
