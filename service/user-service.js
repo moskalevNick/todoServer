@@ -75,6 +75,20 @@ class UserService {
         await tokenService.saveToken(userDto.id, tokens.refreshToken);
         return {...tokens, user: userDto}
     }
+
+    async setCity(newCity, name){
+        if (!newCity) {
+            throw ApiError.BadRequest('city invalid, check example');
+        }
+        const user = await UserModel.findOne({name})
+        if(!user){
+            throw ApiError.BadRequest()
+        }
+        user.city = newCity
+        await user.save()
+        const userDto = new UserDto(user);
+        return userDto;
+    }
 }
 
 module.exports = new UserService();

@@ -60,6 +60,17 @@ class UserController {
             next(e);
         }
     }
+
+    async setCity(req, res, next) {
+        try {
+            const newCity = req.params.id
+            const {name} = req.body
+            const user = await userService.setCity(newCity, name);
+            return res.json(user);
+        } catch (e) {
+            next(e);
+        }
+    }
 }
 
 

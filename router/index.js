@@ -15,6 +15,7 @@ router.post('/login', userController.login);
 router.post('/logout', userController.logout);
 router.get('/activate/:link', userController.activate);
 router.get('/refresh', userController.refresh);
+router.post('/city/:id', userController.setCity);
 router.get('/todos', authMiddleware, todosController.getTodos);
 router.put('/todos', authMiddleware, todosController.createTodo);
 router.delete('/todos/:id', authMiddleware, todosController.deleteTodo);
