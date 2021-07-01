@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
     credentials: true,
-    origin: 'https://myperfecttodo.web.app'
+    origin: 'http://localhost:3000'  //https://myperfecttodo.web.app  http://localhost:3000  
 }));
 app.use('/api', router);
 app.use(errorMiddleware);

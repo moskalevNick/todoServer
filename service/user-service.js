@@ -20,7 +20,7 @@ class UserService {
         const activationLink = uuid.v4(); // v34fa-asfasf-142saf-sa-asf
 
         const user = await UserModel.create({ email, password: hashPassword, activationLink, name})
-        await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
+        await mailService.sendActivationMail(email, `https://myperfecttodo.web.app/api/activate/${activationLink}`);
 
         const userDto = new UserDto(user); // id, email, isActivated
         const tokens = tokenService.generateTokens({...userDto});
@@ -60,11 +60,15 @@ class UserService {
     }
 
     async refresh(refreshToken) {
+        console.log('refreshToken', refreshToken);
         if (!refreshToken) {
+            console.log('error');
             throw ApiError.UnauthorizedError();
         }
         const userData = tokenService.validateRefreshToken(refreshToken);
         const tokenFromDb = await tokenService.findToken(refreshToken);
+        console.log('userData', userData);
+        console.log('tokenFromDb', tokenFromDb);
         if (!userData || !tokenFromDb) {
             throw ApiError.UnauthorizedError();
         }
