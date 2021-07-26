@@ -20,7 +20,7 @@ class UserService {
         const activationLink = uuid.v4(); // v34fa-asfasf-142saf-sa-asf
 
         const user = await UserModel.create({ email, password: hashPassword, activationLink, name})
-        await mailService.sendActivationMail(email, `https://myperfecttodo.web.app/api/activate/${activationLink}`);
+        await mailService.sendActivationMail(email, `https://perfecttodolist.netlify.app/api/activate/${activationLink}`);
 
         const userDto = new UserDto(user); // id, email, isActivated
         const tokens = tokenService.generateTokens({...userDto});

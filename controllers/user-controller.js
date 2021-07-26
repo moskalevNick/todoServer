@@ -48,7 +48,7 @@ class UserController {
         try {
             const activationLink = req.params.link;
             await userService.activate(activationLink);
-            return res.redirect('https://myperfecttodo.web.app/');
+            return res.redirect('https://perfecttodolist.netlify.app/');
         } catch (e) {
             next(e);
         }
