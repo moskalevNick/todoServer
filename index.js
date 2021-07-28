@@ -6,21 +6,21 @@ const mongoose = require('mongoose');
 const router = require('./router/index')
 const errorMiddleware = require('./middlewares/error-middleware');
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 7000;
 const app = express()
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
     credentials: true,
-    origin: 'https://perfecttodolist.netlify.app'  //https://myperfecttodo.web.app  http://localhost:3000  
+    origin: process.env.CLIENT_URL
 }));
 app.use('/api', router);
 app.use(errorMiddleware);
 
 const start = async () => {
     try {
-        await mongoose.connect("mongodb+srv://keks:22101995Kolya@cluster0.o9t1k.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+        await mongoose.connect(process.env.DB_URL, {
             useCreateIndex: true,
             useNewUrlParser: true,
             useUnifiedTopology: true,

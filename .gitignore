@@ -1,3 +1,36 @@
+# node_modules
 /node_modules
-/.env
-.idea
+
+# public
+creds
+
+# MACOS files
+*.DS_Store/*
+.DS_Store
+
+# IDE files
+.idea/*
+
+# .lock
+package-lock.json
+yarn.lock
+
+# Logs
+logs
+*.log
+
+# production
+/build
+/dist
+
+# .vscode
+.vscode/*
+
+# firebase
+.firebase/*
+
+# Local Netlify folder
+.netlify
+
+# environment
+.env
