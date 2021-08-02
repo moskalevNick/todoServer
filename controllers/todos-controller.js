@@ -16,7 +16,7 @@ class TodosController {
             if(!req.body.title){
                 throw new ApiError.BadRequest
             }
-            await todoService.createTodo({ title: req.body.title, userId: req.user.id });
+            await todoService.createTodo({ title: req.body.title, date: req.body.date, userId: req.user.id });
             return res.json({});
         } catch (e) {
             next(e);

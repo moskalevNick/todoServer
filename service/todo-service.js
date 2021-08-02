@@ -6,8 +6,8 @@ class TodosService {
         return todos;
     }    
 
-    async createTodo({ userId, title }) {
-        const newTodo = new Todo({ title, userId, important: false, checked: false })
+    async createTodo({ userId, title, date }) {
+        const newTodo = new Todo({ title, userId, date, important: false, checked: false })
         await newTodo.save() 
     }    
 
