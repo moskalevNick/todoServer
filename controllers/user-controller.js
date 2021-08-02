@@ -45,8 +45,8 @@ class UserController {
     }
 
     async activate(req, res, next) {
+        console.log('ACTIVAAAAAAAAAAAAAAAAAAAAAAATE');
         try {
-            console.log('ACTIVAAAAAAAAAAAAAAAAAAAAAAATE');
             const activationLink = req.params.link;
             console.log(activationLink);
             await userService.activate(activationLink);
@@ -58,7 +58,6 @@ class UserController {
 
     async refresh(req, res, next) {
         try {
-            console.log('REFREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEESH');
             const {refreshToken} = req.cookies;
             const userData = await userService.refresh(refreshToken);
             res.cookie('refreshToken', userData.refreshToken, 
