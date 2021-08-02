@@ -45,6 +45,7 @@ class UserController {
     }
 
     async activate(req, res, next) {
+        console.log('ACTIVAAAAAAAAAAAAAAAAAAAAAAATE');
         try {
             const activationLink = req.params.link;
             console.log(activationLink);
