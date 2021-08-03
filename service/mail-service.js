@@ -17,17 +17,18 @@ class MailService {
         })
     }
 
-    async sendActivationMail(to, link) {
+    async sendActivationMail(to, link, name) {
         await this.transporter.sendMail({
             from: process.env.SMTP_USER,
             to,
-            subject: 'Активация аккаунта на todoService',
+            subject: `Hello ${name}`,
             text: '',
             html:
                 `
                     <div>
-                        <h1>Для активации перейдите по ссылке</h1>
-                        <a href="${link}">${link}</a>
+                        <h3> Thank you for choosing Task manager </h3>
+                        <h1> Please confirm your email. We don't spam </h1>
+                        <button href="${link}">${link}</button>
                     </div>
                 `
         })
