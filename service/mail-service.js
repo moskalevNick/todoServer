@@ -28,7 +28,9 @@ class MailService {
                     <div>
                         <h3> Thank you for choosing Task manager </h3>
                         <h1> Please confirm your email. We don't spam </h1>
-                        <button href="${link}">confirm</button>
+                        <form action="${link}" target="_blank">
+                            <button>confirm email</button>
+                        </form>
                     </div>
                 `
         })
