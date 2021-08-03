@@ -24,15 +24,13 @@ class MailService {
             subject: `Hello ${name}`,
             text: '',
             html:
-                `
-                    <div>
-                        <h3> Thank you for choosing Task manager </h3>
-                        <h1> Please confirm your email. We don't spam </h1>
-                        <button>
-                            <a  href=${link}>confirm email<a/>
-                        <button/>
-                    </div>
-                `
+                `<div>
+                    <h3 style="text-align:center"> Thank you for choosing Task manager </h3>
+                    <h2 style="text-align:center"> Please confirm your email. We don't spam </h2>
+                    <button style=" position: relative; left: 50%; transform: translate(-50%, 0); padding: 10px; background-color: darkseagreen; border: none; border-radius: 5px;">
+                        <a  href=${link} style="text-decoration: none; color: white;">confirm email</a>
+                    </button>
+                </div>`
         })
     }
 }
