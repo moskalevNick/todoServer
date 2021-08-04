@@ -70,11 +70,11 @@ class UserController {
     async setCity(req, res, next) {
         const city = req.params.id
         const {name} = req.body
+        const data = await userService.setCity(city, name);
         try {
             if ( data.cod === '404' ) {
                 console.log('error 404');
             }
-            const data = await userService.setCity(city, name);
             return res.json(data);
         } catch (e) {
             next(e);
