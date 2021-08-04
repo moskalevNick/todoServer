@@ -90,6 +90,7 @@ class UserService {
         user.city = city
         const responce = await fetch(weatherURL)
         const data = await responce.json()
+        console.log(data);
         await user.save()
         return { user: new UserDto(user), weather: data }
     }
