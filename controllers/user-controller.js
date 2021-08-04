@@ -68,7 +68,13 @@ class UserController {
     }
 
     async setCity(req, res, next) {
+        const weatherURL = process.env.REACT_APP_API_URL_WEATHER + city + process.env.REACT_APP_API_URL_WEATHER_2
         try {
+            const responce = await fetch(weatherURL)
+            const data = await responce.json()
+            if ( data.cod === '404' ) {
+                console.log('error 404');
+            }
             const newCity = req.params.id
             const {name} = req.body
             const user = await userService.setCity(newCity, name);
