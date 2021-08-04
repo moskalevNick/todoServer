@@ -77,18 +77,20 @@ class UserService {
         return {...tokens, user: userDto}
     }
 
-    async setCity(newCity, name){
-        if (!newCity) {
+    async setCity(city, name){
+        if (!city) {
             throw ApiError.BadRequest('city invalid, check example');
         }
         const user = await UserModel.findOne({name})
+        const weatherURL = process.env.REACT_APP_API_URL_WEATHER + city + process.env.REACT_APP_API_URL_WEATHER_2
         if(!user){
             throw ApiError.BadRequest()
         }
-        user.city = newCity
+        user.city = city
+        const responce = await fetch(weatherURL)
+        const data = await responce.json()
         await user.save()
-        const userDto = new UserDto(user);
-        return userDto;
+        return { user: new UserDto(user), weather: data }
     }
 }
 
