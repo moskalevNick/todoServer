@@ -91,9 +91,7 @@ class UserService {
         const responce = await fetch(weatherURL)
         const data = await responce.json()
         await user.save()
-        if (data){
-            return { user: new UserDto(user), weather: data }
-        }
+        return { user: new UserDto(user), weather: data }
     }
 }
 
