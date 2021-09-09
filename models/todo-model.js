@@ -5,7 +5,8 @@ const TodoSchema = new Schema({
     title: { type: String, required: true },
     important: { type: Boolean, required: true },
     checked: { type: Boolean, required: true },
-    date: { type: String, required: true}
+    date: { type: String, required: true},
+    deadline: { type: String, required: true}
 })
 
 module.exports = model('Todo', TodoSchema);

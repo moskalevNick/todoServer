@@ -1,4 +1,5 @@
 const Todo = require('../models/todo-model')
+const deadLineDate = require('../helpers/dateToDeadlineFormatter')
 
 class TodosService {
     async getTodosByUserId( userId ) {
@@ -7,7 +8,8 @@ class TodosService {
     }    
 
     async createTodo({ userId, title, date }) {
-        const newTodo = new Todo({ title, userId, date, important: false, checked: false })
+        const deadline = deadLineDate(date)
+        const newTodo = new Todo({ title, userId, date, important: false, checked: false, deadline })
         await newTodo.save() 
     }    
 

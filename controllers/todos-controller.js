@@ -2,10 +2,40 @@ const ApiError = require('../exceptions/api-error');
 const todoService = require('../service/todo-service');
 
 class TodosController {
-  async getTodos(req, res, next) {
+    async getTodos(req, res, next) {
     try {
         const todos = await todoService.getTodosByUserId( req.user.id )
-        res.json(todos)
+        switch(req.query.type){
+            case 'main':
+                if(req.query.deadline === 'all'){
+                    res.json(todos)
+                } else {
+                    const filteredTodos = todos.filter((el) => el.deadline === req.query.deadline )
+                    res.json(filteredTodos)
+                }
+                break
+            case 'important':
+                const importantTodos = todos.filter((el) => el.important === true)
+                if(req.query.deadline === 'all'){
+                    res.json(importantTodos)
+                } else {
+                    const filteredImportantTodos = todos.filter((el) => el.deadline === req.query.deadline )
+                    res.json(filteredImportantTodos)
+                }
+                break
+            case 'checked':
+                const checkedTodos = todos.filter((el) => el.checked === true)
+                if(req.query.deadline === 'all'){
+                    res.json(checkedTodos)
+                } else {
+                    const filteredCheckedTodos = todos.filter((el) => el.deadline === req.query.deadline )
+                    res.json(filteredCheckedTodos)
+                }
+                break
+            default:
+                res.json(todos)
+                break
+        }
     } catch (e) {
         next(e);
     }
